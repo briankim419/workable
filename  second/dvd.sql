@@ -21,7 +21,6 @@
   2. A customer tried to rent “Image Princess” from store 1 on 29/07/2005 at 3pm but it
   was sold-out. Would he be able to rent it from store 2 if he had tried?
 
-
 SELECT film.film_id, title, inventory.last_update, store_id, rental_date, return_date, inventory.inventory_id
 FROM film
 INNER JOIN inventory ON inventory.film_id = film.film_id
@@ -106,9 +105,8 @@ revenue |        title
 3388.05 | Network Peak
 3379.99 | Rocketeer Mother
 
-release year and rental date?
 
-best roi? under the assumption that replacement_cost = cogs
+Best ROI under the assumption that replacement_cost = cogs
 
 SELECT (SUM(payment.amount) - SUM(film.replacement_cost)) / SUM(film.replacement_cost) AS roi, film.title
 FROM film

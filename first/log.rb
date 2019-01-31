@@ -17,7 +17,7 @@ access.each do |line|
   if !line[/FROM/].nil?
       database_name = line[/FROM "(.*?")/, 1]
     if database_name == nil
-      database_name = line[/FROM (.*?) /, 1].delete"(\")"
+      database_name = line[/FROM +(\w+)/m, 1]
     else
       database_name = line[/FROM "(.*?")/, 1].delete"(\")"
     end
@@ -31,7 +31,7 @@ access.each do |line|
   if !line[/JOIN/].nil?
     database_name = line[/JOIN "(.*?")/, 1]
   if database_name == nil
-    database_name = line[/JOIN (.*?) /, 1].delete"(\")"
+    database_name = line[/JOIN +(\w+)/m, 1]
   else
     database_name = line[/JOIN "(.*?")/, 1].delete"(\")"
   end
@@ -60,7 +60,7 @@ access.each do |line|
     status_302_count += 1
   end
 
-  if line[/Service unavailable (503)/] || line[/status=503/]
+  if line[/Service unavailable \(503\)/] || line[/status=503/]
     status_503_count += 1
   end
 
@@ -72,15 +72,10 @@ average_load_time.each do |time|
 end
 average = sum_of_load_time / average_load_time.length
 
+puts status_404
 puts average
+puts database_count
+puts status_302_count
+puts status_503_count
 
-
-# 1. List of URLs that were not found (404 error), including number of times each URL
-# was requested
-# 2. Average time to serve a page
-# 3. Which database table is most frequently loaded?
-# 4. Is any URL redirection taking place?
-# 5. Are there any server errors? Ideas about possible causes?
-    # database_name = line[/FROM (.*?) /, 1].delete"(\")"
-    # answer_choices
-# ‍‍.*? matches all the characters until the next pattern after .*? is found. But .* just matches all the characters.
+binding.pry
