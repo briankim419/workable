@@ -22,6 +22,5 @@ This application features a Ruby on Rails with a React.js stack. The purpose of 
 5. Start the rails server and webpack server.
 
   `$ rails s`
-  `$ yarn start`
 
 6. Navigate to localhost:3000 in your web browser. Google Chrome is recommended.

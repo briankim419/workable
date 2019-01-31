@@ -1,37 +1,3 @@
-require "pg"
-require "pry"
-
-def db_connection
-  begin
-    connection = PG.connect(dbname: "dvdrental")
-    yield(connection)
-  ensure
-    connection.close
-  end
-end
-
-
-db_connection do |conn|
-  a = conn.exec("SELECT rental_id FROM rental")
-binding.pry
-end
-
-SELECT customer.customer_id, customer.first_name, customer.last_name, customer.activebool, customer.active, customer.last_update FROM customer
-  JOIN rental ON customer.customer_id = rental.customer_id;
-
-
-
-  1. Which customer has made the most rentals at store 2?
-  2. A customer tried to rent “Image Princess” from store 1 on 29/07/2005 at 3pm but it
-  was sold-out. Would he be able to rent it from store 2 if he had tried?
-  3. How many customers are active at any given month per year (e.g. …, Jun 2005, Jul
-  2005,...., Jun 2006 etc)? We define active as performing at least one rental during
-  that month.
-  4. Which film category is the most popular among our customers?
-  5. Which film is the most popular in category “Sports”?
-  6. Are there any other insights that you can gather from the data that would be helpful
-  to the owner of this business?
-
 1. Which customer has made the most rentals at store 2?
   SELECT
    customer.customer_id,
