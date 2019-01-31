@@ -5,9 +5,9 @@ This application features a Ruby on Rails with a React.js stack. The purpose of 
 
 ### Getting Started
 
-1. Clone the repository to your machine.
+1. Clone the workable repository to your machine.
 
-2. Navigate to the cloned repository.
+2. Navigate to the cloned repository and then to folder "three".
 
 3. Run the following from the command line to install all necessary dependencies:
 
